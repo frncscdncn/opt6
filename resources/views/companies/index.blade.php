@@ -20,35 +20,38 @@
             </div>
         @endif
 
-        <table class="table table-striped" id="myTable">
-            <thead>
-                <tr>
-                    <th>Название компании</th>
-                    <th>Эл. почта</th>
-                    <th>Кол-во сотрудников</th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($companies as $company)
+        <div class="table-responsive">
+            <table class="table table-striped" id="myTable">
+                <thead>
                     <tr>
-                        <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
-                        <td>{{ $company->email }}</td>
-                        <td>{{ count($company->workers) }}</td>
-                        <td class="text-nowrap text-end" style="width: 10px;">
-                            <a class="btn btn-primary" href="{{ route('companies.edit', $company->id) }}">Редактировать</a>
-                            <form class="d-inline-block" action="{{ route('companies.destroy', $company->id) }}"
-                                method="POST">
-
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Удалить</button>
-                            </form>
-                        </td>
+                        <th>Название компании</th>
+                        <th>Эл. почта</th>
+                        <th>Кол-во сотрудников</th>
+                        <th>Действия</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($companies as $company)
+                        <tr>
+                            <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
+                            <td>{{ $company->email }}</td>
+                            <td>{{ count($company->workers) }}</td>
+                            <td class="text-nowrap text-end" style="width: 10px;">
+                                <a class="btn btn-primary"
+                                    href="{{ route('companies.edit', $company->id) }}">Редактировать</a>
+                                <form class="d-inline-block" action="{{ route('companies.destroy', $company->id) }}"
+                                    method="POST">
+
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
         <script>
             $(document).ready(function() {
