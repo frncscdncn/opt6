@@ -33,7 +33,7 @@
                 </p>
                 <p>
                     <strong>Адрес:</strong>
-                    {{ $company->address }}
+                    <span id="company-address">{{ $company->address }}</span>
                 </p>
                 <p>
                     <strong>Количество сотрудников:</strong>
